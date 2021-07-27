@@ -20,4 +20,4 @@ MEL-GHMF is a multimodal entity linking method with gated hierarchical multimoda
 
 The KG used in this paper is extracted from Wikidata, which has more than 170K triples and about 80K entities. 
 
-Full datasets and detailed descriptions are accessed via https://github.com/seukgcode/MELBench
+Note: In this repository, we only provide part of samples. Full datasets and detailed descriptions can be accessed via https://github.com/seukgcode/MELBench.
