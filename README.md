@@ -6,7 +6,7 @@ MEL-GHMF is a multimodal entity linking method with gated hierarchical multimoda
 ## 2. Principle of MEL-GHMF  
 MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimodal co-attention, and (3) gated hierarchical  multimodal fusion. 
  First, we respectively extract visual features by ResNet and embed token-level textual features with BERT. 
- Following previous work \cite{lu2016hierarchical}, we convolve phrase embedding vectors using filters with different window sizes, and apply max-pooling across the various n-grams to obtain a single phrase-level representation.
+ We convolve phrase embedding vectors using filters with different window sizes, and apply max-pooling across the various n-grams to obtain a single phrase-level representation.
  Afterwards, hierarchical multimodal co-attention mechanism alternately focuses on multimodal information, constructing visual-guided textual features and textual-guided visual features at two levels: token-level and phrase-level.
  We separately combine the guided two-level features of textual and visual information as their respective representations. 
  Gated fusion is then used to adaptively integrate the above representations of textual modality and visual modality into a joint multimodal representation.
