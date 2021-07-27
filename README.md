@@ -11,6 +11,7 @@ MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimod
  We separately combine the guided two-level features of textual and visual information as their respective representations. 
  Gated fusion is then used to adaptively integrate the above representations of textual modality and visual modality into a joint multimodal representation.
  Finally, we obtain the linking entities by measuring the similarity between features of the multimodal representations and candidate entities, which are selected in advance by calculating the standardized edit distance between names of mentions and  entities.
+![image](https://user-images.githubusercontent.com/18082151/127132229-9612258d-8f36-43a3-af5a-d9300409198a.png)
 
 ## 3. Usage of the code
 1. Extract Visual features by the command:    sh img_feat_ex.sh
@@ -27,5 +28,9 @@ MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimod
 **Richpedia-MEL**: For Richpedia-MEL, we first collect the Wikidata ids of entities in a large-scale multimodal knowledge graph Richpedia, then obtain the corresponding multimodal information from 524 Wikipedia pages. Richpedia-MEL has more than 17K multimodal 525 samples. 
 
 The KG used in this paper is extracted from Wikidata, which has more than 170K triples and about 80K entities. 
+
+The statistics of datasets are summarized in following Table, which contain total samples, mentions, average text length of a sample, and average number of mentions in a sample.
+![image](https://user-images.githubusercontent.com/18082151/127132538-5e4c1da8-3bd4-47b4-ae2b-32049c410848.png)
+
 
 Note: In this repository, we only provide part of samples. Full datasets and detailed descriptions can be accessed via our another repository https://github.com/seukgcode/MELBench.
