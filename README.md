@@ -20,6 +20,9 @@ MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimod
 3. Train the model by the command:                     sh nel_train.sh
 4. Test the model by the command:                     sh nel_test.sh
 
+**Hyperparameters**：We set the dimensions of textual and visual features to 512,  MCA  dimension to 512, the number of stacked layers of multimodal co-attention to 2,  mention feature and entity feature dimensions to 768,  heads of MH-SA to 8, dropout to 0.4,  triplet loss interval to 0.5.
+We optimize the parameters with AdamW  with batch size 32, learning rate $5\times10^{-5}$,  L2 regularization coefficient 0.2 and gradient clipping threshold 1.0. 
+
 ## 4. Datasets
 
 **Twitter-MEL**:  It is a dataset with more than 31K multimodal samples from Tweets. 
