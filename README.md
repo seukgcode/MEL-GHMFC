@@ -11,7 +11,7 @@ MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimod
  We separately combine the guided two-level features of textual and visual information as their respective representations. 
  Gated fusion is then used to adaptively integrate the above representations of textual modality and visual modality into a joint multimodal representation.
  Finally, we obtain the linking entities by measuring the similarity between features of the multimodal representations and candidate entities, which are selected in advance by calculating the standardized edit distance between names of mentions and  entities.
-![image](https://user-images.githubusercontent.com/18082151/127132229-9612258d-8f36-43a3-af5a-d9300409198a.png)
+![image -w80](https://user-images.githubusercontent.com/18082151/127132229-9612258d-8f36-43a3-af5a-d9300409198a.png)
 
 ## 3. Usage of the code
 1. Extract Visual features by the command:    sh img_feat_ex.sh
