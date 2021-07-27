@@ -11,6 +11,7 @@ MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimod
  We separately combine the guided two-level features of textual and visual information as their respective representations. 
  Gated fusion is then used to adaptively integrate the above representations of textual modality and visual modality into a joint multimodal representation.
  Finally, we obtain the linking entities by measuring the similarity between features of the multimodal representations and candidate entities, which are selected in advance by calculating the standardized edit distance between names of mentions and  entities.
+ 
 ![image -w80](https://user-images.githubusercontent.com/18082151/127132229-9612258d-8f36-43a3-af5a-d9300409198a.png)
 
 ## 3. Usage of the code
@@ -30,6 +31,7 @@ MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimod
 The KG used in this paper is extracted from Wikidata, which has more than 170K triples and about 80K entities. 
 
 The statistics of datasets are summarized in following Table, which contain total samples, mentions, average text length of a sample, and average number of mentions in a sample.
+
 ![image](https://user-images.githubusercontent.com/18082151/127133729-f1774f7e-1886-45d2-9844-d228ba07a6b4.png)
 
 
