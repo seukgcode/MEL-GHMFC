@@ -30,8 +30,7 @@ MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimod
 The KG used in this paper is extracted from Wikidata, which has more than 170K triples and about 80K entities. 
 
 The statistics of datasets are summarized in following Table, which contain total samples, mentions, average text length of a sample, and average number of mentions in a sample.
-![image](https://user-images.githubusercontent.com/18082151/127133620-664f5f7d-9bf3-463c-9295-1f4f23c3b57a.png)
-
+![image](https://user-images.githubusercontent.com/18082151/127133729-f1774f7e-1886-45d2-9844-d228ba07a6b4.png)
 
 
 Note: In this repository, we only provide part of samples. Full datasets and detailed descriptions can be accessed via our another repository https://github.com/seukgcode/MELBench.
