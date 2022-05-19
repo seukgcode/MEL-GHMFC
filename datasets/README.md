@@ -1,4 +1,5 @@
 # Datasets download
-We further expand our three MEL datasets by crawling the brief introduction of entities from wikipedia and top-10 images in the entity page.
-The download links are released for researchers to use:\
-- Enriched text of three MEL datasets. https://www.aliyundrive.com/s/zyXeLQx7sgh.
+We further expand WIKI-MEL and Richpedia-MEL datasets by crawling the brief introduction of entities from wikipedia and top-10 images in the entity page.
+The download links are released for researchers to use:
+-https://pan.baidu.com/s/1WbIfj3nAJAmFoHWSOxgcog.
+ 
