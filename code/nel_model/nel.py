@@ -8,7 +8,29 @@ from gated_fuse import GatedFusion
 from recursive_encoder import RecursiveEncoder
 from circle_loss import CircleLoss
 from triplet_loss import TripletMarginLoss
+def Contrastive_loss(out_1, out_2, batch_size, temperature=0.5):
+    out = torch.cat([out_1, out_2], dim=0)  # [2*B, D]
+    sim_matrix = torch.exp(torch.mm(out, out.t().contiguous()) / temperature)  # [2*B, 2*B]
+    '''
+    torch.mm是矩阵乘法，a*b是对应位置上的数相除，维度和a，b一样
+    '''
+    mask = (torch.ones_like(sim_matrix) - torch.eye(2 * batch_size, device=sim_matrix.device)).bool()
+    '''
+    torch.eye生成对角线上为1，其他为0的矩阵
+    torch.eye(3)
+    tensor([[ 1.,  0.,  0.],
+            [ 0.,  1.,  0.],
+            [ 0.,  0.,  1.]])
+    '''
+    # [2*B, 2*B-1]
+    sim_matrix = sim_matrix.masked_select(mask).view(2 * batch_size, -1)
 
+    # compute loss
+    pos_sim = torch.exp(torch.sum(out_1 * out_2, dim=-1) / temperature)
+    # [2*B]
+    pos_sim = torch.cat([pos_sim, pos_sim], dim=0)
+    loss = (- torch.log(pos_sim / (sim_matrix.sum(dim=-1)-pos_sim))).mean()
+    return loss
 
 class NELModel(nn.Module):
     def __init__(self, args):
@@ -104,10 +126,17 @@ class NELModel(nn.Module):
 
         pos_feats_trans = self.trans(pos_feats)
         neg_feats_trans = self.trans(neg_feats)
+        
+        ct_text_feats=torch.mean(bert_trans,dim=1)
+        ct_text_feats=nn.functional.normalize(cl_text_feats,dim=-1)
+        ct_img_feats=torch.mean(img_trans,dim=1)
+        ct_img_feats=nn.functional.normalize(cl_img_feats,dim=-1)
+        ct_loss=Contrastive_loss(ct_text_feats,ct_img_feats,batch_size,0.6)
+ 
         if self.loss_function == 'circle':
-            loss = self.loss(query, pos_feats_trans, neg_feats_trans)
+            loss = self.loss(query, pos_feats_trans, neg_feats_trans)+ct_loss
         else:
-            loss = self.loss(query, pos_feats_trans.squeeze(), neg_feats_trans.squeeze())
+            loss = self.loss(query, pos_feats_trans.squeeze(), neg_feats_trans.squeeze())+ct_loss
 
         return loss, query, \
                (attn_w, attn_p)
