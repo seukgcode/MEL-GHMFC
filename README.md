@@ -1,15 +1,16 @@
-# MEL-GHMF： A Multimodal Entity Linking Model with Gated Hierarchical Fusion
+# MEL-GHMFC： A Multimodal Entity Linking Model with Gated Hierarchical Fusion and Contrastive training
 
 ## 1. Introduction
-MEL-GHMF is a multimodal entity linking method with gated hierarchical multimodal fusion.  First,  it  extracts  hierarchical  textual  andvisual  co-attended  features  to  discover  fine-grained  inter-modalcorrelations by  multimodal  co-attention  mechanisms:  textual-guided  visual  attention  and  visual-guided  textual  attention.  The former   attention   obtains   weighted   visual features  under  the guidance of textual information. In contrast, the latter attention produces weighted textual features under the guidance of visual information. Afterwards, gated fusion is used to adaptively evaluate the importance of hierarchical features of different modalities and  integrate  them  as  the  final  multimodal  representations  of mentions. Finally, the linking entities are selected by calculating the  cosine  similarity  between  representations  of  mentions  andentities in knowledge graph. 
+MEL-GHMFC is a multimodal entity linking method with gated hierarchical multimodal fusion.  First,  it  extracts  hierarchical  textual  andvisual  co-attended  features  to  discover  fine-grained  inter-modalcorrelations by  multimodal  co-attention  mechanisms:  textual-guided  visual  attention  and  visual-guided  textual  attention.  The former   attention   obtains   weighted   visual features  under  the guidance of textual information. In contrast, the latter attention produces weighted textual features under the guidance of visual information. Afterwards, gated fusion is used to adaptively evaluate the importance of hierarchical features of different modalities and  integrate  them  as  the  final  multimodal  representations  of mentions. Subsequently, contrastive training with two types of contrastive
+losses is designed to learn more generic multimodal features and reduce noise. Finally, the linking entities are selected by calculating the  cosine  similarity  between  representations  of  mentions  andentities in knowledge graph. 
 
-## 2. Principle of MEL-GHMF  
-MEL-GHMF includes three steps: (1)  multimodal features extraction, (2) multimodal co-attention, and (3) gated hierarchical  multimodal fusion. 
+## 2. Principle of MEL-GHMFC  
+MEL-GHMFC includes three steps: (1)  multimodal features extraction, (2) multimodal co-attention, and (3) gated hierarchical  multimodal fusion. 
  First, we respectively extract visual features by ResNet and embed token-level textual features with BERT. 
  We convolve phrase embedding vectors using filters with different window sizes, and apply max-pooling across the various n-grams to obtain a single phrase-level representation.
  Afterwards, hierarchical multimodal co-attention mechanism alternately focuses on multimodal information, constructing visual-guided textual features and textual-guided visual features at two levels: token-level and phrase-level.
  We separately combine the guided two-level features of textual and visual information as their respective representations. 
- Gated fusion is then used to adaptively integrate the above representations of textual modality and visual modality into a joint multimodal representation.
+ Gated fusion is then used to adaptively integrate the above representations of textual modality and visual modality into a joint multimodal representation. We design vision-text contrastive loss and text-vision contrastive loss during contrastive training to improve the quality of multimodal representations and avoid noise.
  Finally, we obtain the linking entities by measuring the similarity between features of the multimodal representations and candidate entities, which are selected in advance by calculating the standardized edit distance between names of mentions and  entities.
  
 ![image -w80](https://user-images.githubusercontent.com/18082151/127132229-9612258d-8f36-43a3-af5a-d9300409198a.png)
